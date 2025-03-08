@@ -63,7 +63,7 @@ describe("create user use case", () => {
 
     vitest.spyOn(usersRepository, "findByEmail").mockImplementationOnce(async () => user)
 
-    expect(() => sut.execute({
+    await expect(() => sut.execute({
       email: "email",
       name: "name",
       password: "password",
