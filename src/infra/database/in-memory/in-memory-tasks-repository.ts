@@ -49,6 +49,21 @@ export class InMemoryTasksRepository implements TasksRepository {
     const task =  
       this.database.find((task) => task.userId === input.userId && task.title === input.title)
 
-    return task ?? null
+    if(!task) {
+      return null
+    }
+
+    return task
+  }
+
+  async findById(input: TasksRepository.FindById.Input): TasksRepository.FindById.Output {
+    const task =  
+      this.database.find((task) => task.taskId === input.taskId)
+
+    if(!task) {
+      return null
+    }
+
+    return task
   }
 }

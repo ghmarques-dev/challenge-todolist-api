@@ -6,6 +6,7 @@ export type TasksRepository = {
   update(input: TasksRepository.Update.Input): TasksRepository.Update.Output
   getAll(input: TasksRepository.GetAll.Input): TasksRepository.GetAll.Output
   findByTitle(input: TasksRepository.FindByTitle.Input): TasksRepository.FindByTitle.Output
+  findById(input: TasksRepository.FindById.Input): TasksRepository.FindById.Output
 }
 
 export namespace TasksRepository {
@@ -54,6 +55,14 @@ export namespace TasksRepository {
     export type Input = {
       userId: string
       title: string
+    }
+
+    export type Output = Promise<Task | null>
+  }
+
+  export namespace FindById {
+    export type Input = {
+      taskId: string
     }
 
     export type Output = Promise<Task | null>
