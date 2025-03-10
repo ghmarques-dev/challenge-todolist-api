@@ -8,7 +8,7 @@ import { InMemoryHashRepository } from '@/infra/crypto/in-memory'
 
 import { ICreateUserUseCase } from '@/domain/use-cases/users'
 import { CreateUserUseCase } from './create-user'
-import { EmailAlreadyExistError } from '@/application/errors/errors'
+import { AlreadyExistError } from '@/application/errors/errors'
 import { User } from '@/domain/entities'
 
 let usersRepository: UsersRepository
@@ -67,7 +67,7 @@ describe("create user use case", () => {
       email: "email",
       name: "name",
       password: "password",
-    })).rejects.toBeInstanceOf(EmailAlreadyExistError)
+    })).rejects.toBeInstanceOf(AlreadyExistError)
   })
 
   it("should be able to call create hash repository with correct values", async () => {

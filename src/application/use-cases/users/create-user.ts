@@ -1,7 +1,7 @@
 import { ICreateUserUseCase } from "@/domain/use-cases/users"
 import { UsersRepository } from "@/application/protocols/database"
 
-import { EmailAlreadyExistError } from "@/application/errors/errors"
+import { AlreadyExistError } from "@/application/errors/errors"
 import { HashRepository } from "@/application/protocols/crypto"
 
 export class CreateUserUseCase implements ICreateUserUseCase {
@@ -16,7 +16,7 @@ export class CreateUserUseCase implements ICreateUserUseCase {
     })
 
     if (userAlreadyExists) {
-      throw new EmailAlreadyExistError()
+      throw new AlreadyExistError("Email")
     }
 
     const passwordHash = await this.hashRepository.create({ 
