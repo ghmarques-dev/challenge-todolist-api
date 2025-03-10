@@ -1,4 +1,3 @@
-import { AlreadyExistError, NotExistError } from "@/application/errors/errors"
 import { TasksRepository } from "@/application/protocols/database/tasks-repository"
 
 import { IGetTasksUseCase } from "@/domain/use-cases/tasks"
