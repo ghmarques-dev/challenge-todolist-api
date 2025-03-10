@@ -6,7 +6,6 @@ export interface IGetTasksUseCase {
 
 export namespace IGetTasksUseCase {
   export type Input = {
-    taskId: string
     userId: string
   }
 
