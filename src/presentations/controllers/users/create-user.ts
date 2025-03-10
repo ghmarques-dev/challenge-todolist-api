@@ -32,7 +32,7 @@ export class CreateUserController {
       const token = sign({ sub: result.userId }, env.JWT_SECRET)
 
       return response.status(201).send({ token })
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (error instanceof AlreadyExistError) {
         return response.status(400).send({ message: error.message })
       }
