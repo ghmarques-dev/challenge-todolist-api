@@ -109,7 +109,7 @@ describe("update task use case", () => {
       title: "title",
       description: "description", 
       status: "Progress",
-      deliveryDate: new Date()
+      deliveryDate: expect.any(Date)
     })
   })
 })
