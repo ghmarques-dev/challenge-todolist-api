@@ -24,7 +24,7 @@ export class CreateTaskController {
       } = createTaskBody.parse(request.body)
 
       const result = await this.createTaskUseCase.execute({
-        userId: request.user?.id!,
+        userId: request.user.id,
         title,
         status,
         description,
