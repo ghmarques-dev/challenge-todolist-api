@@ -6,7 +6,6 @@ import { IDeleteTaskUseCase } from '@/domain/use-cases/tasks'
 
 import { DeleteTaskUseCase } from './delete-task'
 import { NotExistError } from '@/application/errors/errors'
-import { Task } from '@/domain/entities'
 
 let tasksRepository: TasksRepository
 let sut: IDeleteTaskUseCase

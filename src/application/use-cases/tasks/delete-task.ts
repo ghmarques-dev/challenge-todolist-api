@@ -1,5 +1,5 @@
-import { AlreadyExistError, NotExistError } from "@/application/errors/errors";
-import { TasksRepository } from "@/application/protocols/database/tasks-repository";
+import { AlreadyExistError, NotExistError } from "@/application/errors/errors"
+import { TasksRepository } from "@/application/protocols/database/tasks-repository"
 
 import { IDeleteTaskUseCase } from "@/domain/use-cases/tasks"
 

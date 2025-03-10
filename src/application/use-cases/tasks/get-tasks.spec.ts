@@ -5,13 +5,11 @@ import { TasksRepository } from '@/application/protocols/database/tasks-reposito
 import { IGetTasksUseCase } from '@/domain/use-cases/tasks'
 
 import { GetTasksUseCase } from './get-tasks'
-import { NotExistError } from '@/application/errors/errors'
-import { Task } from '@/domain/entities'
 
 let tasksRepository: TasksRepository
 let sut: IGetTasksUseCase
 
-describe("get task use case", () => {
+describe("get tasks use case", () => {
   beforeEach(() => {
     tasksRepository = new InMemoryTasksRepository()
 
