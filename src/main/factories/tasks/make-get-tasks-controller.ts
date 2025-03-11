@@ -3,7 +3,7 @@ import { GetTasksController } from "@/presentations/controllers/tasks"
 
 import { PrismaTasksRepository } from "@/infra/database/prisma/repositories"
 
-export function makeGetTaskController() {
+export function makeGetTasksController() {
     const tasksRepository = new PrismaTasksRepository()
 
     const getTaskUseCase = new GetTasksUseCase(tasksRepository)

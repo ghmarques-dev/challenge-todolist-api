@@ -28,7 +28,7 @@ export class UpdateTaskController {
       } = updateTaskBody.parse(request.body)
       const {
         taskId
-      } = updateTaskParams.parse(request.body)
+      } = updateTaskParams.parse(request.params)
 
       const result = await this.updateTaskUseCase.execute({
         taskId,

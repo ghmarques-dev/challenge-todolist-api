@@ -13,7 +13,12 @@ export class CreateTaskController {
         title: z.string(),
         description: z.string().optional(),
         status: z.enum(["Pending", "Progress", "Completed"]),
-        deliveryDate: z.date()
+        deliveryDate: z
+          .string()
+          .refine((val) => !isNaN(Date.parse(val)), {
+            message: "Invalid date format",
+          })
+          .transform((val) => new Date(val))
       })
 
       const {

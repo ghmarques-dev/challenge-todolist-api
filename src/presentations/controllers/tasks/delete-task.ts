@@ -15,7 +15,7 @@ export class DeleteTaskController {
 
       const {
         taskId
-      } = deleteTaskParams.parse(request.body)
+      } = deleteTaskParams.parse(request.params)
 
       await this.deleteTaskUseCase.execute({
         taskId,

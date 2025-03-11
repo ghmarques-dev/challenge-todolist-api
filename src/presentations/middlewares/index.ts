@@ -1,1 +1,1 @@
-export * from './verify-jwt'
+export * from './ensure-authenticated'

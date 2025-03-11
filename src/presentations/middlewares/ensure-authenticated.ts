@@ -17,9 +17,9 @@ export function ensureAuthenticated(
   const [, token] = authHeader.split(" ") 
 
   try {
-    const decoded = verify(token, env.JWT_SECRET)
+    const decoded = verify(token, env.JWT_SECRET) as { sub: string };
 
-    request.user = { id: decoded.sub as any }
+    request.user = { id: decoded.sub }
 
     return next() 
   } catch (error) {
