@@ -7,6 +7,7 @@ import {
   makeGetTasksController, 
   makeUpdateTaskController 
 } from "@/main/factories/tasks"
+import { makeGetTaskController } from "@/main/factories/tasks/make-get-task-controller"
 
 export const routesTasks = Router()
 
@@ -16,6 +17,13 @@ routesTasks.get(
   '/tasks', 
   async (request, response) => {
     await makeGetTasksController().handle(request, response)
+  }
+)
+
+routesTasks.get(
+  '/tasks/:taskId', 
+  async (request, response) => {
+    await makeGetTaskController().handle(request, response)
   }
 )
 
