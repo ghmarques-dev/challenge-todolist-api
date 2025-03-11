@@ -40,9 +40,23 @@ export class InMemoryTasksRepository implements TasksRepository {
   }
 
   async getAll(input: TasksRepository.GetAll.Input): TasksRepository.GetAll.Output {
-    const tasks = this.database.filter((task) => task.userId === input.userId)
-
+    const tasks = this.database
+      .filter((item) => item.title.includes(input.search) && item.userId === input.userId)
+      .slice((input.page - 1) * 20, input.page * 20)
+  
     return tasks
+  }
+
+  async countAll(input: TasksRepository.CountAll.Input): TasksRepository.CountAll.Output {
+    const count = this.database.reduce((acc, item) => {
+      if (item.title.includes(input.search)) {
+        return acc + 1
+      }
+
+      return acc
+    }, 0)
+
+    return count
   }
 
   async findByTitle(input: TasksRepository.FindByTitle.Input): TasksRepository.FindByTitle.Output {

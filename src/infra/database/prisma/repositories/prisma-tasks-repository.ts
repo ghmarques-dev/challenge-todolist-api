@@ -39,9 +39,20 @@ export class PrismaTasksRepository implements TasksRepository {
   async getAll(input: TasksRepository.GetAll.Input): TasksRepository.GetAll.Output {
     const tasks = await prisma.task.findMany({
       where: {
-        userId: input.userId
-      }
+        userId: input.userId,
+        title: {
+          contains: input.search, 
+          mode: "insensitive",
+        },
+      },
+      take: 20, 
+      skip: (input.page - 1) * 20, 
+      orderBy: {
+        createdAt: "desc", 
+      },
     })
+
+    console.log(tasks, input)
 
     const tasksTyped = tasks.map(item => this.mapToTask(item))
 
@@ -68,6 +79,20 @@ export class PrismaTasksRepository implements TasksRepository {
     })
 
     return task ? this.mapToTask(task) : null
+  }
+
+  async countAll(input: TasksRepository.CountAll.Input): TasksRepository.CountAll.Output {
+    const count = await prisma.task.count({
+      where: {
+        userId: input.userId,
+        title: {
+          contains: input.search,
+          mode: "insensitive",
+        },
+      },
+    })
+
+    return count
   }
 
   private mapToTask(task: any): Task {

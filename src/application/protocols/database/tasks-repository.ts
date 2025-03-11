@@ -5,6 +5,7 @@ export type TasksRepository = {
   delete(input: TasksRepository.Delete.Input): TasksRepository.Delete.Output
   update(input: TasksRepository.Update.Input): TasksRepository.Update.Output
   getAll(input: TasksRepository.GetAll.Input): TasksRepository.GetAll.Output
+  countAll(input: TasksRepository.CountAll.Input): TasksRepository.CountAll.Output
   findByTitle(input: TasksRepository.FindByTitle.Input): TasksRepository.FindByTitle.Output
   findById(input: TasksRepository.FindById.Input): TasksRepository.FindById.Output
 }
@@ -46,9 +47,20 @@ export namespace TasksRepository {
   export namespace GetAll {
     export type Input = {
       userId: string
+      search: string
+      page: number
     }
 
     export type Output = Promise<Task[]>
+  }
+
+  export namespace CountAll {
+    export type Input = {
+      userId: string
+      search: string
+    }
+
+    export type Output = Promise<number>
   }
 
   export namespace FindByTitle {

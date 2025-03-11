@@ -7,7 +7,14 @@ export interface IGetTasksUseCase {
 export namespace IGetTasksUseCase {
   export type Input = {
     userId: string
+    search: string
+    page: number
   }
 
-  export type Output = Promise<Task[]>
+  export type Output = Promise<{
+    tasks: Task[],
+    meta: {
+      count_tasks: number
+    }
+  }>
 }
